@@ -1,0 +1,76 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+/* немного стилей для приложения (да, оно опять все фиолетовое) */
+body {
+  background-color: #fbdeff;
+  color: #4a148c;
+  align-items: center;
+  padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #6a1b9a;
+}
+
+form {
+  display: inline-block; /* чтобы форма не растягивалась на всю ширину */
+  text-align: left;
+}
+
+form div {
+  margin-bottom: 1rem;
+}
+
+label {
+  color: #4a148c;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input, textarea {
+  border: 2px solid #8e24aa;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button {
+  background-color: #8e24aa;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button.valid {
+  background-color: #8e24aa;
+}
+
+button.valid:hover {
+  background-color: #7b1fa2;
+}
+
+button.invalid { /* кнопка становится красной, если форма невалидна */
+  background-color: red;
+}
+
+button.invalid:hover {
+  background-color: darkred;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+a {
+  color: #6a1b9a;
+}
+
+a:hover {
+  color: #4a148c;
+}
