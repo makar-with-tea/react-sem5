@@ -10,7 +10,7 @@ const UserForm: React.FC = () => {
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     // пользовательский хук для валидации формы
-    const validation = useFormValidation(name, email, password);
+    const validationResult = useFormValidation(name, email, password);
 
     // хук useRef для ссылки на элементы формы
     const nameRef = useRef<HTMLInputElement>(null);
@@ -19,8 +19,8 @@ const UserForm: React.FC = () => {
 
     // хук useMemo для мемоизации результатов валидации
     const isFormValid = useMemo(() => {
-        return validation.name && validation.email && validation.password;
-    }, [validation]);
+        return validationResult.name && validationResult.email && validationResult.password;
+    }, [validationResult]);
 
     // хук useCallback для оптимизации функций-обработчиков
     const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,16 +41,16 @@ const UserForm: React.FC = () => {
         setFormSubmitted(true);
 
         // установка фокуса на первом невалидном поле при отправке формы
-        if (!validation.name) {
+        if (!validationResult.name) {
             nameRef.current?.focus();
-        } else if (!validation.email) {
+        } else if (!validationResult.email) {
             emailRef.current?.focus();
-        } else if (!validation.password) {
+        } else if (!validationResult.password) {
             passwordRef.current?.focus();
         } else {
             alert('Форма успешно отправлена');
         }
-    }, [validation]);
+    }, [validationResult]);
 
     // форма с полями для ввода имени, почты и пароля и кнопкой отправки
     return (
@@ -65,7 +65,7 @@ const UserForm: React.FC = () => {
                         ref={nameRef}
                     />
                 </label>
-                {formSubmitted && !validation.name && (
+                {formSubmitted && !validationResult.name && (
                     <div className="error">Имя должно содержать хотя бы 3 символа</div>
                 )}
             </div>
@@ -79,7 +79,7 @@ const UserForm: React.FC = () => {
                         ref={emailRef}
                     />
                 </label>
-                {formSubmitted && !validation.email && (
+                {formSubmitted && !validationResult.email && (
                     <div className="error">Введите правильный email</div>
                 )}
             </div>
@@ -93,7 +93,7 @@ const UserForm: React.FC = () => {
                         ref={passwordRef}
                     />
                 </label>
-                {formSubmitted && !validation.password && (
+                {formSubmitted && !validationResult.password && (
                     <div className="error">Пароль должен быть не менее 6 символов</div>
                 )}
             </div>
