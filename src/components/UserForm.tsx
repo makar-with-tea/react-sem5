@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useMemo } from 'react';
 import useFormValidation from './UseFormValidation';
-import './app.css';
+import '../app.css';
 
 const UserForm: React.FC = () => {
     // хук useState для хранения значений полей формы
